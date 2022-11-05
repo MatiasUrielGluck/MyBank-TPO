@@ -1,7 +1,7 @@
 package apis_tp;
 
 public interface Cola {
-	public void inicializar();
+	public void inicializar(String tipoPuesto);
 	
 	public void acolarPrioridad(Turno turno);
 	
