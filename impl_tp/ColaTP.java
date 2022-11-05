@@ -2,48 +2,51 @@ package impl_tp;
 
 import apis_tp.Cola;
 import apis_tp.Turno;
-import impl.ColaPrioridadAO;
+import apis_tp.ColaPrioridadTurnos;
+import impl_tp.ColaPrioridadTurnosTP;
 
 public class ColaTP implements Cola {
 
 	private int tiempoTotal;
-	private ColaPrioridadAO colaPrioridad;
+	private ColaPrioridadTurnos colaPrioridad;
 	private String tipoPuesto;
 	
 	@Override
 	public void inicializar(String tipoPuesto) {
 		this.tiempoTotal = 0;
-		this.colaPrioridad = new ColaPrioridadAO();
+		
+		this.colaPrioridad = new ColaPrioridadTurnosTP();
+		this.colaPrioridad.inicializarCola();
+		
 		this.tipoPuesto = tipoPuesto;
 	}
 
 	@Override
 	public void acolarPrioridad(Turno turno) {
-		
+		this.colaPrioridad.acolarPrioridad(turno, turno.nomenclatura2prioridad());
+		this.tiempoTotal += turno.getTiempoAtencion();
 	}
 
 	@Override
 	public void desacolar() {
-		// TODO Auto-generated method stub
-		
+		Turno turno = this.colaPrioridad.primero();
+		this.colaPrioridad.desacolar();
+		this.tiempoTotal -= turno.getTiempoAtencion();
 	}
 
 	@Override
 	public Turno primero() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.colaPrioridad.primero();
 	}
 
 	@Override
 	public int devolverTiempoTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.tiempoTotal;
 	}
 
 	@Override
 	public Boolean colaVacia() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.colaPrioridad.colaVacia();
 	}
 
 }

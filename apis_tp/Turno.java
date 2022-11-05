@@ -9,4 +9,6 @@ public interface Turno {
 	public int getTiempoAtencion();
 	
 	public void setTiempoAtencion(int nuevoTiempo);
+	
+	public int nomenclatura2prioridad();
 }

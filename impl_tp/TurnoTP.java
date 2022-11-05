@@ -42,4 +42,22 @@ public class TurnoTP implements Turno {
 		this.tiempoAtencion = nuevoTiempo;		
 	}
 
+	@Override
+	public int nomenclatura2prioridad() {
+		// Si es servicio
+		if (this.nomenclatura.length() > 1) {
+			// Prioridad por servicio
+			if (this.nomenclatura.substring(1, 3) == "PF") {
+				return 3;
+			} else if (this.nomenclatura.substring(1, 3) == "CH") {
+				return 2;
+			} else {
+				return 1;
+			}
+		// Si no es servicio la prioridad es siempre 1
+		} else {
+			return 1;
+		}
+	}
+
 }
