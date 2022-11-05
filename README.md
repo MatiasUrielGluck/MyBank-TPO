@@ -6,6 +6,7 @@
 
 - ColaTPTDA
 
+___
 ## Administrador de Colas
 
 - Inicializar: cantidadPuestos (int)
@@ -18,7 +19,24 @@
 
 ___
 
-- AgregarCola: 
+- AgregarCola: ?
+
+___
+
+- CantidadDeColas: devuelve "cantidadPuestos"
+
+___
+
+- DevolverCola: idCola (int)
+
+___
+
+- TiempoEstimadoCola: idCola (int)
+    - Devuelve el tiempo total de la cola con "idCola"
+
+___
+
+- PuestoDelElemento: turno (Turno)
 
 ___
 
@@ -33,4 +51,13 @@ ___
     
     - "Clasificaciones" es un diccionario clave = indice, valor = clasificación. Ver valores en "tipoPuesto".
 
-    
+    - "Turno" es un TDA con las siguientes propiedades y métodos:
+        - Nomenclatura (String): ejemplo, "J1" representa Jubilado, id 1.
+        - id (int): identificador único.
+        - idCola (int): id de la cola a la que el ticket está asociado.
+
+        - Inicializar (nomenclatura, id, idCola): asigna las variables parámetro a sus propiedades correspondientes.
+
+___
+
+## ColaTPTDA
