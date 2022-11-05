@@ -1,5 +1,13 @@
 package impl_tp;
 
-public class TurnoTP {
+import apis_tp.Turno;
+
+public class TurnoTP implements Turno {
+
+	@Override
+	public void inicializar() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
