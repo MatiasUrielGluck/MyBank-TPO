@@ -19,7 +19,8 @@ ___
 
 #
 
-- AgregarCola: ?
+- AgregarCola: tipo (String), turno (Turno) [!] CAMBIO EN LA FIRMA DEL ENUNCIADO [!]
+    - Busca la cola correspondiente al "tipo" según su "tipoPuesto" y agrega el "turno" allí.
 
 #
 
