@@ -55,9 +55,29 @@ ___
         - Nomenclatura (String): ejemplo, "J1" representa Jubilado, id 1.
         - id (int): identificador único.
         - idCola (int): id de la cola a la que el ticket está asociado.
+        - tiempoAtencion (int): el tiempo de espera asociado al turno
 
         - Inicializar (nomenclatura, id, idCola): asigna las variables parámetro a sus propiedades correspondientes.
 
 ___
 
 ## ColaTPTDA
+
+- tiempoTotal (int)
+
+- Inicializar: inicializa la estructura
+- AcolarPrioridad: turno (Turno)
+    - Si no existe el "id" del "turno" en "conjuntoIds":
+        - Agregar el "turno" a la cola y sumar el "turno"."tiempoAtencion" al "tiempoTotal". 
+
+- Desacolar: 
+    - Desacola el elemento con mayor prioridad. Resta de "tiempoTotal" el "turno"."tiempoAtencion", donde "turno" es el elemento desacolado.
+
+- Primero: devuelve el primer turno de la cola.
+
+- DevolverTiempoTotal: devuelve "tiempoTotal"
+
+- ColaVacia: devuelve si la cola está o no vacía.
+
+___
+
