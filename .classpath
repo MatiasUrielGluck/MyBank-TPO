@@ -6,5 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="C:/Users/matia/eclipse-workspace/MyBankTPO/Parcial.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
