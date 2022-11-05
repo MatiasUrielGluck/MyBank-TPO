@@ -17,28 +17,28 @@ ___
             - Si no, asignar tipoPuesto en "X"
     - Agrega la ColaTPTDA al diccionario "puestos"
 
-***
+#
 
 - AgregarCola: ?
 
-***
+#
 
 - CantidadDeColas: devuelve "cantidadPuestos"
 
-***
+#
 
 - DevolverCola: idCola (int)
 
-***
+#
 
 - TiempoEstimadoCola: idCola (int)
     - Devuelve el tiempo total de la cola con "idCola"
 
-***
+#
 
 - PuestoDelElemento: turno (Turno)
 
-***
+#
 
 - Detalles del TDA:
     - El diccionario "puestos" está compuesto por: clave = idCola, valor = ColaTPTDA
