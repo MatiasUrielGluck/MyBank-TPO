@@ -16,8 +16,12 @@ public class Principal {
 		Turno turnoSCG = adminColas.crearTurno("SCG");
 		
 		adminColas.agregarCola(turnoC);
+		Turno turnoC2 = adminColas.crearTurno("C");
+		adminColas.agregarCola(turnoC2);
+		
 		Cola colaDeC = adminColas.puestoDelElemento(turnoC);
-		System.out.println(colaDeC.getCantidad());
+		colaDeC.desacolar();
+		System.out.println(colaDeC.devolverTiempoTotal());
 	}
 	
 	public static void main(String[] args) {
