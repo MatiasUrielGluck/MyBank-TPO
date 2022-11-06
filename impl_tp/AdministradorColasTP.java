@@ -79,7 +79,7 @@ public class AdministradorColasTP implements AdministradorColas {
 
 	@Override
 	public Cola puestoDelElemento(Turno turno) {
-		// TODO Devolver this.colas[turno.idCola]
+		return this.colas[turno.getIdCola()];
 	}
 
 	@Override

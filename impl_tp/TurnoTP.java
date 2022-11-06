@@ -7,6 +7,7 @@ public class TurnoTP implements Turno {
 	private String nomenclatura;
 	private int id;
 	private int tiempoAtencion;
+	private int idCola; // Cola a la que el turno está asociado
 	
 	@Override
 	public void inicializar(String nomenclatura, int id) {
@@ -15,6 +16,16 @@ public class TurnoTP implements Turno {
 		setTiempoAtencion(nomenclatura);
 	}
 
+	@Override
+	public void setIdCola(int id) {
+		this.idCola = id;
+	}
+	
+	@Override
+	public int getIdCola() {
+		return this.idCola;
+	}
+	
 	@Override
 	public String getNomenclatura() {
 		return this.nomenclatura;

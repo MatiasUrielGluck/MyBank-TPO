@@ -3,6 +3,9 @@ package apis_tp;
 public interface Turno {
 	public void inicializar(String nomenclatura, int id);
 	
+	public void setIdCola(int id);
+	public int getIdCola();
+	
 	public String getNomenclatura();
 	public void setNomenclatura(String nomenclatura);
 	
