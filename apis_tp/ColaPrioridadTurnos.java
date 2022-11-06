@@ -6,4 +6,5 @@ public interface ColaPrioridadTurnos {
 	public void desacolar();
 	public Turno primero();
 	public Boolean colaVacia();
+	public int getCantidad();
 }

@@ -14,6 +14,7 @@ public class TurnoTP implements Turno {
 		this.nomenclatura = nomenclatura;
 		this.id = id;	
 		setTiempoAtencion(nomenclatura);
+		this.idCola = -1;
 	}
 
 	@Override

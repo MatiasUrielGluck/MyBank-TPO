@@ -8,8 +8,16 @@ import impl_tp.AdministradorColasTP;
 public class Principal {
 
 	public static void debugTests(AdministradorColas adminColas) {
-		Turno turno = adminColas.crearTurno("SPF");
+		Turno turnoC = adminColas.crearTurno("C");
+		Turno turnoP = adminColas.crearTurno("P");
+		Turno turnoJ = adminColas.crearTurno("J");
+		Turno turnoSPF = adminColas.crearTurno("SPF");
+		Turno turnoSCH = adminColas.crearTurno("SCH");
+		Turno turnoSCG = adminColas.crearTurno("SCG");
 		
+		adminColas.agregarCola(turnoC);
+		Cola colaDeC = adminColas.puestoDelElemento(turnoC);
+		System.out.println(colaDeC.getCantidad());
 	}
 	
 	public static void main(String[] args) {

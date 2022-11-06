@@ -65,4 +65,9 @@ public class ColaTP implements Cola {
 		this.nomenclatura = nomenclatura;
 	}
 
+	@Override
+	public int getCantidad() {
+		return this.colaPrioridad.getCantidad();
+	}
+
 }

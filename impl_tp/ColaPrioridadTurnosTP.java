@@ -46,4 +46,9 @@ public class ColaPrioridadTurnosTP implements ColaPrioridadTurnos {
 	public int prioridad() {
 		return elementos[indice - 1].prioridad;
 	}
+	
+	@Override
+	public int getCantidad() {
+		return this.indice;
+	}
 }

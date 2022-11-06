@@ -17,4 +17,6 @@ public interface Cola {
 	
 	public String getNomenclatura();
 	public void setNomenclatura(String nomenclatura);
+	
+	public int getCantidad();
 }
