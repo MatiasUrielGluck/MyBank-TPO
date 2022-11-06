@@ -78,7 +78,7 @@ public class Principal {
 		Debug.imprimir("Tiempo de espera puesto general 2", adminColas.devolverCola(5).devolverTiempoTotal());
 	}
 	
-	public static void cargarTurnos(AdministradorColas adminColas) {
+	public static int cargarTurnos(AdministradorColas adminColas) {
 		System.out.println("Por favor ingrese turnos.");
 		System.out.println("Para ingresar un turno, escriba el codigo del tipo de turno y presione ENTER.");
 		System.out.println("Los codigos disponibles son:\n");
@@ -115,9 +115,10 @@ public class Principal {
 		
 		System.out.println("Carga finalizada con exito.");
 		System.out.println("Turnos cargados: " + turnosCargados + "\n");
+		return turnosCargados;
 	}
 	
-	public static void atenderTurnos(AdministradorColas adminColas) {
+	public static void atenderTurnos(AdministradorColas adminColas, int turnosCargados) {
 		// Atender en base a la entrada del usuario
 		// US:
 		// El usuario ingresa la nomenclatura de un puesto.
@@ -125,12 +126,13 @@ public class Principal {
 		// El usuario puede continuar ingresando nomenclaturas o -1 para finalizar.
 		// El sistema debe mostrar:
 		// TODO
+		
 	}
 	
 	public static void programa(AdministradorColas adminColas) {
 		System.out.println("Bienvenid@\n");
-		cargarTurnos(adminColas);
-		atenderTurnos(adminColas);
+		int turnosCargados = cargarTurnos(adminColas);
+		atenderTurnos(adminColas, turnosCargados);
 	}
 	
 	public static void main(String[] args) {
@@ -139,7 +141,7 @@ public class Principal {
 		adminColas.inicializar(6);
 		
 		// Tests
-		// testCarga(adminColas);
+//		 testCarga(adminColas);
 		
 		// Programa
 		programa(adminColas);
