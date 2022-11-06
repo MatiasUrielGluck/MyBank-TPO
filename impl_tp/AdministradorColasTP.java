@@ -6,40 +6,110 @@ import apis_tp.Turno;
 
 public class AdministradorColasTP implements AdministradorColas {
 
+	private Cola[] colas;
+	private int idCount;
+	
 	@Override
 	public void inicializar(int cantidadPuestos) {
-		// TODO Auto-generated method stub
+		colas = new Cola[cantidadPuestos];
 		
+		for (int i = 0; i < cantidadPuestos; i++) {
+			Cola nuevaCola = new ColaTP();
+			String nomenclatura = "X";
+			if (i < 4) nomenclatura = indice2nomenclatura(i);
+			nuevaCola.inicializar(i, nomenclatura);
+			colas[i] = nuevaCola;
+		}
+		
+		this.idCount = 1; // El valor que tomará el id del primer turno
 	}
 
 	@Override
-	public void agregarCola(String tipo, Turno turno) {
-		// TODO Auto-generated method stub
+	public void agregarCola(Turno turno) {
+		// TODO
+		// buscar la cola correspondiente al tipo
+		String nomenclatura = turno.getNomenclatura();
+
+		switch (nomenclatura) {
+		case "C":
+			
+			break;
+			
+		case "P":
+			
+			break;
+			
+		case "J":
+			
+			break;
+			
+		case "SPF":
+			
+			break;
+			
+		case "SCH":
+			
+			break;
+			
+		case "SCG":
+			
+			break;
+			
+		default: break;
+	}
 		
+		// agregar el id a la cola
+		this.idCount++;
 	}
 
 	@Override
 	public int cantidadDeColas() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.colas.length;
 	}
 
 	@Override
 	public Cola devolverCola(int idCola) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.colas[idCola];
 	}
 
 	@Override
 	public int tiempoEstimadoCola(int idCola) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.colas[idCola].devolverTiempoTotal();
 	}
 
 	@Override
 	public Cola puestoDelElemento(Turno turno) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Devolver this.colas[turno.idCola]
 	}
 
+	@Override
+	public Turno crearTurno(String nomenclatura) {
+		Turno nuevoTurno = new TurnoTP();
+		
+		nuevoTurno.inicializar(nomenclatura, idCount);
+		
+		return nuevoTurno;
+	}
+
+	public String indice2nomenclatura(int i) {
+		switch (i) {
+			case 0: return "C";
+			case 1: return "P";
+			case 2: return "J";
+			case 3: return "S";
+	
+			default: return null;
+		}
+	}
+	
+	public int nomenclatura2indice(String nomenclatura) {
+		switch (nomenclatura) {
+			case "C": return 0;
+			case "P": return 1;
+			case "J": return 2;
+			case "S": return 3;
+	
+			default: return -1;
+		}
+	}
 }

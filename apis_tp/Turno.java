@@ -1,14 +1,17 @@
 package apis_tp;
 
 public interface Turno {
-	public void inicializar(String nomenclatura, int id, int idCola, int tiempoAtencion);
+	public void inicializar(String nomenclatura, int id);
 	
 	public String getNomenclatura();
-	public int getId();
-	public int getColaId();
-	public int getTiempoAtencion();
+	public void setNomenclatura(String nomenclatura);
 	
+	public int getId();
+	public void setId(int id);
+	
+	public int getTiempoAtencion();
 	public void setTiempoAtencion(int nuevoTiempo);
+	public void setTiempoAtencion(String nomenclatura);
 	
 	public int nomenclatura2prioridad();
 }

@@ -7,20 +7,26 @@ import impl_tp.ColaPrioridadTurnosTP;
 
 public class ColaTP implements Cola {
 
+	private int id;
 	private int tiempoTotal;
 	private ColaPrioridadTurnos colaPrioridad;
-	private String tipoPuesto;
+	private String nomenclatura;
 	
 	@Override
-	public void inicializar(String tipoPuesto) {
+	public void inicializar(int id, String nomenclatura) {
 		this.tiempoTotal = 0;
 		
 		this.colaPrioridad = new ColaPrioridadTurnosTP();
 		this.colaPrioridad.inicializarCola();
 		
-		this.tipoPuesto = tipoPuesto;
+		this.nomenclatura = nomenclatura;
 	}
 
+	@Override
+	public int getId() {
+		return this.id;
+	}
+	
 	@Override
 	public void acolarPrioridad(Turno turno) {
 		this.colaPrioridad.acolarPrioridad(turno, turno.nomenclatura2prioridad());
@@ -50,13 +56,13 @@ public class ColaTP implements Cola {
 	}
 
 	@Override
-	public String getTipoPuesto() {
-		return this.tipoPuesto;
+	public String getNomenclatura() {
+		return this.nomenclatura;
 	}
 
 	@Override
-	public void setTipoPuesto(String tipoPuesto) {
-		this.tipoPuesto = tipoPuesto;
+	public void setNomenclatura(String nomenclatura) {
+		this.nomenclatura = nomenclatura;
 	}
 
 }

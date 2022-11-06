@@ -1,7 +1,9 @@
 package apis_tp;
 
 public interface Cola {
-	public void inicializar(String tipoPuesto);
+	public void inicializar(int id, String nomenclatura);
+	
+	public int getId();
 	
 	public void acolarPrioridad(Turno turno);
 	
@@ -13,6 +15,6 @@ public interface Cola {
 	
 	public Boolean colaVacia();
 	
-	public String getTipoPuesto();
-	public void setTipoPuesto(String tipoPuesto);
+	public String getNomenclatura();
+	public void setNomenclatura(String nomenclatura);
 }
