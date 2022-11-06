@@ -49,4 +49,14 @@ public class ColaTP implements Cola {
 		return this.colaPrioridad.colaVacia();
 	}
 
+	@Override
+	public String getTipoPuesto() {
+		return this.tipoPuesto;
+	}
+
+	@Override
+	public void setTipoPuesto(String tipoPuesto) {
+		this.tipoPuesto = tipoPuesto;
+	}
+
 }

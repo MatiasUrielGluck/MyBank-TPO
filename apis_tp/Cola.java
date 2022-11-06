@@ -12,4 +12,7 @@ public interface Cola {
 	public int devolverTiempoTotal();
 	
 	public Boolean colaVacia();
+	
+	public String getTipoPuesto();
+	public void setTipoPuesto(String tipoPuesto);
 }
