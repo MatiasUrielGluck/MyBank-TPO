@@ -50,6 +50,7 @@ public class AdministradorColasTP implements AdministradorColas {
 					// No se pudo agregar
 					return;
 				}
+				contador++;
 			}
 		}
 		

@@ -29,6 +29,13 @@ public class ColaTP implements Cola {
 	
 	@Override
 	public void acolarPrioridad(Turno turno) {
+		// Tratamiento especial por ser cola general
+		if (this.nomenclatura == "X") {
+			this.colaPrioridad.acolarPrioridad(turno, colaXnomenclatura2prioridad(turno.getNomenclatura()));
+			this.tiempoTotal += turno.getTiempoAtencion();
+			return;
+		}
+		
 		this.colaPrioridad.acolarPrioridad(turno, turno.nomenclatura2prioridad());
 		this.tiempoTotal += turno.getTiempoAtencion();
 	}
@@ -70,4 +77,18 @@ public class ColaTP implements Cola {
 		return this.colaPrioridad.getCantidad();
 	}
 
+	public int colaXnomenclatura2prioridad(String nomenclatura) {
+		if (nomenclatura.equals("J")) return 6;
+		else if (this.nomenclatura.length() > 1) {
+			// Prioridad por servicio
+			if (this.nomenclatura.substring(1, 3).equals("PF")) {
+				return 5;
+			} else if (this.nomenclatura.substring(1, 3).equals("CH")) {
+				return 4;
+			} else {
+				return 3;
+			}
+		} else if (nomenclatura.equals("C")) return 2;
+		else return 1;
+	}
 }

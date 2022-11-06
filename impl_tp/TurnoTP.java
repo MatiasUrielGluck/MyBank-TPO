@@ -92,7 +92,7 @@ public class TurnoTP implements Turno {
 	public int nomenclatura2prioridad() {
 		// Si es servicio
 		if (this.nomenclatura.length() > 1) {
-			// Prioridad por serviciod
+			// Prioridad por servicio
 			if (this.nomenclatura.substring(1, 3).equals("PF")) {
 				return 3;
 			} else if (this.nomenclatura.substring(1, 3).equals("CH")) {
