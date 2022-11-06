@@ -61,6 +61,11 @@ public class AdministradorColasTP implements AdministradorColas {
 	}
 
 	@Override
+	public void desacolarColar(String nomenclatura) {
+		this.colas[nomenclatura2indice(nomenclatura)].desacolar();
+	}
+	
+	@Override
 	public int cantidadDeColas() {
 		return this.colas.length;
 	}
@@ -118,6 +123,9 @@ public class AdministradorColasTP implements AdministradorColas {
 				return 3;
 				
 			case "SCG":
+				return 3;
+				
+			case "S":
 				return 3;
 				
 			default: return -1;

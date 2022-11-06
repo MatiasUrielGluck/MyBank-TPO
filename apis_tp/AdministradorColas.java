@@ -5,6 +5,8 @@ public interface AdministradorColas {
 	
 	public void agregarCola(Turno turno);
 	
+	public void desacolarColar(String nomenclatura);
+	
 	public int cantidadDeColas();
 	
 	public Cola devolverCola(int idCola);

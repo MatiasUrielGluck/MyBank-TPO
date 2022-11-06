@@ -3,6 +3,7 @@ package Ejecucion;
 import apis_tp.AdministradorColas;
 import apis_tp.Cola;
 import apis_tp.Turno;
+import helpers.Debug;
 import impl_tp.AdministradorColasTP;
 
 public class Principal {
@@ -20,8 +21,10 @@ public class Principal {
 		adminColas.agregarCola(turnoC2);
 		
 		Cola colaDeC = adminColas.puestoDelElemento(turnoC);
-		colaDeC.desacolar();
-		System.out.println(colaDeC.devolverTiempoTotal());
+
+		adminColas.desacolarColar("C");
+		
+		Debug.imprimir(colaDeC.devolverTiempoTotal());
 	}
 	
 	public static void main(String[] args) {
