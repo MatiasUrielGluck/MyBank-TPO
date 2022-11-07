@@ -9,7 +9,10 @@ import impl_tp.AdministradorColasTP;
 
 public class Principal {
 	
-	public static void testCarga(AdministradorColas adminColas) {
+	static int cantidadPuestos = 6;
+	static AdministradorColas adminColas;
+	
+	public static void testCarga() {
 		// Llenar cola de clientes
 		for (int i = 0; i < 7; i++) {
 			Turno turno = adminColas.crearTurno("C");
@@ -78,7 +81,9 @@ public class Principal {
 		Debug.imprimir("Tiempo de espera puesto general 2", adminColas.devolverCola(5).devolverTiempoTotal());
 	}
 	
-	public static int cargarTurnos(AdministradorColas adminColas) {
+	public static int cargarTurnos() {
+		// BUG --> Al ingresar letra minuscula, se rompe el programa
+		// TODO
 		System.out.println("Por favor ingrese turnos.");
 		System.out.println("Para ingresar un turno, escriba el codigo del tipo de turno y presione ENTER.");
 		System.out.println("Los codigos disponibles son:\n");
@@ -100,7 +105,7 @@ public class Principal {
 		 	 System.out.println();
 		 	 
 		 	 if (
-		 			entrada.toUpperCase().equals("C") ||
+		 			entrada.toUpperCase().equals("C") || // BUG
 		 			entrada.toUpperCase().equals("P") ||
 		 			entrada.toUpperCase().equals("J") ||
 		 			entrada.toUpperCase().equals("SPF") ||
@@ -118,7 +123,7 @@ public class Principal {
 		return turnosCargados;
 	}
 	
-	public static void atenderTurnos(AdministradorColas adminColas, int turnosCargados) {
+	public static void atenderTurnos() {
 		// Atender en base a la entrada del usuario
 		// US:
 		// El usuario ingresa la nomenclatura de un puesto.
@@ -126,25 +131,56 @@ public class Principal {
 		// El usuario puede continuar ingresando nomenclaturas o -1 para finalizar.
 		// El sistema debe mostrar:
 		// TODO
+		System.out.println("Por favor ingrese el puesto que atendera a continuacian.");
+		System.out.println("Los codigos disponibles son:\n");
+		System.out.println("-1 = Finalizar atención");
+		System.out.println("C = Cliente");
+		System.out.println("P = No cliente");
+		System.out.println("J = Jubilado");
+		System.out.println("S = Servicios");
+		System.out.println("X = General");
 		
+		Scanner sc = new Scanner(System.in);
+		String entrada;
+		
+		while (true) {
+			System.out.print("Ingrese un codigo de puesto: ");
+			entrada = sc.nextLine();
+			System.out.println();
+			if (
+				entrada.toUpperCase().equals("C") || // BUG
+				entrada.toUpperCase().equals("P") ||
+				entrada.toUpperCase().equals("J") ||
+				entrada.toUpperCase().equals("S") ||
+				entrada.toUpperCase().equals("X")
+			) {
+				try {
+					adminColas.desacolarColar(entrada);
+				} catch (Exception e) {
+					System.out.println("El puesto se encuentra vacio.");
+				}
+				
+			} else if (entrada.equals("-1")) break;
+		 	 
+		}
 	}
 	
-	public static void programa(AdministradorColas adminColas) {
+	public static void programa() {
 		System.out.println("Bienvenid@\n");
-		int turnosCargados = cargarTurnos(adminColas);
-		atenderTurnos(adminColas, turnosCargados);
+		int turnosCargados = cargarTurnos();
+		atenderTurnos();
 	}
 	
 	public static void main(String[] args) {
 		System.out.println("*-*-*-* MyBank *-*-*-*");
-		AdministradorColas adminColas = new AdministradorColasTP();
-		adminColas.inicializar(6);
+		adminColas = new AdministradorColasTP();
+		adminColas.inicializar(cantidadPuestos);
 		
 		// Tests
-//		 testCarga(adminColas);
+		 // testCarga(adminColas);
 		
 		// Programa
-		programa(adminColas);
+		programa();
 	}
 
 }

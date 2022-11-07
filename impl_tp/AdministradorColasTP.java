@@ -29,7 +29,7 @@ public class AdministradorColasTP implements AdministradorColas {
 		if (turno.getIdCola() != -1) return; // El turno ya se encuentra en alguna cola
 		
 		String nomenclatura = turno.getNomenclatura();
-
+		
 		// Buscar la cola correspondiente a la nomenclatura
 		// Si la cola no tiene espacio buscar una cola general
 		
