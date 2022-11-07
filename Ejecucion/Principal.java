@@ -5,6 +5,7 @@ import apis_tp.AdministradorColas;
 import apis_tp.Cola;
 import apis_tp.Turno;
 import helpers.Debug;
+import helpers.Utils;
 import impl_tp.AdministradorColasTP;
 
 public class Principal {
@@ -81,7 +82,7 @@ public class Principal {
 		Debug.imprimir("Tiempo de espera puesto general 2", adminColas.devolverCola(5).devolverTiempoTotal());
 	}
 	
-	public static int cargarTurnos() {
+	public static void cargarTurnos() {
 		// BUG --> Al ingresar letra minuscula, se rompe el programa
 		// TODO
 		System.out.println("Por favor ingrese turnos.");
@@ -120,7 +121,6 @@ public class Principal {
 		
 		System.out.println("Carga finalizada con exito.");
 		System.out.println("Turnos cargados: " + turnosCargados + "\n");
-		return turnosCargados;
 	}
 	
 	public static void atenderTurnos() {
@@ -165,22 +165,68 @@ public class Principal {
 		}
 	}
 	
+	public static void informacion() {
+		
+	}
+	
+	public static void menu() {
+		Scanner sc = new Scanner(System.in);
+		String entrada;
+		
+		System.out.println("*-*-*-* My Bank *-*-*-*");
+		System.out.println("*                     *");
+		System.out.println("*     Bienvenido/a    *");
+		System.out.println("*     ------------    *");
+		System.out.println("*                     *");
+		System.out.println("* Opciones:           *");
+		System.out.println("* 1- Cargar turnos    *");
+		System.out.println("* 2- Atender turnos   *");
+		System.out.println("* 3- Informacion      *");
+		System.out.println("* 4- Salir            *");
+		System.out.println("*                     *");
+		System.out.println("*-*-*-*-*-*-*-*-*-*-*-*");
+		
+		while (true) {
+			System.out.print("[Comando]: ");
+			entrada = sc.nextLine();
+			System.out.println();
+			
+			switch (entrada) {
+				case "1":
+					cargarTurnos();
+					continue;
+					
+				case "2":
+					atenderTurnos();
+					continue;
+					
+				case "3":
+					informacion();
+					continue;
+					
+				case "4":
+					return;
+	
+				default: continue;
+			}
+		}
+	}
+	
 	public static void programa() {
 		System.out.println("Bienvenid@\n");
-		int turnosCargados = cargarTurnos();
+		cargarTurnos();
 		atenderTurnos();
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("*-*-*-* MyBank *-*-*-*");
 		adminColas = new AdministradorColasTP();
 		adminColas.inicializar(cantidadPuestos);
 		
 		// Tests
-		 // testCarga(adminColas);
-		
-		// Programa
-		programa();
+		// testCarga(adminColas);
+
+		// Menu
+		menu();
 	}
 
 }
