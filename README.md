@@ -1,3 +1,7 @@
+<!-- TPO PARA LA MATERIA DE PROGRAMACION 2 -->
+<!-- LINK DEL REPO: https://github.com/MatiasUrielGluck/MyBank-TPO -->
+<!-- Contacto: matiasugluck@gmail.com -->
+
 # Trabajo Práctico MyBank - Grupo 5
 
 ## TDAs
