@@ -5,7 +5,7 @@ public interface AdministradorColas {
 	
 	public void agregarCola(Turno turno);
 	
-	public void desacolarColar(String nomenclatura);
+	public void desacolarCola(String nomenclatura);
 	
 	public int cantidadDeColas();
 	
@@ -16,4 +16,6 @@ public interface AdministradorColas {
 	public Cola puestoDelElemento(Turno turno);
 	
 	public Turno crearTurno(String nomenclatura);
+	
+	public int getTiempoTotal();
 }

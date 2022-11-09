@@ -83,8 +83,6 @@ public class Principal {
 	}
 	
 	public static void cargarTurnos() {
-		// BUG --> Al ingresar letra minuscula, se rompe el programa
-		// TODO
 		System.out.println("Por favor ingrese turnos.");
 		System.out.println("Para ingresar un turno, escriba el codigo del tipo de turno y presione ENTER.");
 		System.out.println("Los codigos disponibles son:\n");
@@ -93,27 +91,27 @@ public class Principal {
 		System.out.println("P = No cliente");
 		System.out.println("J = Jubilado");
 		System.out.println("SPF = Servicio - plazos fijos");
-		System.out.println("SCH = Servicio - créditos hipotecarios");
-		System.out.println("SCG = Servicio - créditos generales\n");
+		System.out.println("SCH = Servicio - creditos hipotecarios");
+		System.out.println("SCG = Servicio - creditos generales\n");
 
 		Scanner sc = new Scanner(System.in);
 		String entrada;
 		int turnosCargados = 0;
 		
-		for (int i = 0; i < 42; i++) {
-			System.out.print("Ingrese un codigo de turno: ");
+		while (turnosCargados < 42) {
+			System.out.print("Ingrese un codigo de turno (-1, C, P, J, SPF, SCH, SCG): ");
 		 	 entrada = sc.nextLine();
 		 	 System.out.println();
 		 	 
 		 	 if (
-		 			entrada.toUpperCase().equals("C") || // BUG
+		 			entrada.toUpperCase().equals("C") ||
 		 			entrada.toUpperCase().equals("P") ||
 		 			entrada.toUpperCase().equals("J") ||
 		 			entrada.toUpperCase().equals("SPF") ||
 		 			entrada.toUpperCase().equals("SCH") ||
 		 			entrada.toUpperCase().equals("SCG")
  			 ) {
-		 		Turno turno = adminColas.crearTurno(entrada);
+		 		Turno turno = adminColas.crearTurno(entrada.toUpperCase());
 				adminColas.agregarCola(turno);
 				turnosCargados++;
 		 	 } else if (entrada.equals("-1")) break;
@@ -123,50 +121,23 @@ public class Principal {
 		System.out.println("Turnos cargados: " + turnosCargados + "\n");
 	}
 	
-	public static void atenderTurnos() {
-		// Atender en base a la entrada del usuario
-		// US:
-		// El usuario ingresa la nomenclatura de un puesto.
-		// El sistema debe desacolar el turno de la cola correspondiente a la nomenclatura ingresada por el usuario.
-		// El usuario puede continuar ingresando nomenclaturas o -1 para finalizar.
-		// El sistema debe mostrar:
-		// TODO
-		System.out.println("Por favor ingrese el puesto que atendera a continuacian.");
-		System.out.println("Los codigos disponibles son:\n");
-		System.out.println("-1 = Finalizar atención");
-		System.out.println("C = Cliente");
-		System.out.println("P = No cliente");
-		System.out.println("J = Jubilado");
-		System.out.println("S = Servicios");
-		System.out.println("X = General");
-		
-		Scanner sc = new Scanner(System.in);
-		String entrada;
-		
-		while (true) {
-			System.out.print("Ingrese un codigo de puesto: ");
-			entrada = sc.nextLine();
-			System.out.println();
-			if (
-				entrada.toUpperCase().equals("C") || // BUG
-				entrada.toUpperCase().equals("P") ||
-				entrada.toUpperCase().equals("J") ||
-				entrada.toUpperCase().equals("S") ||
-				entrada.toUpperCase().equals("X")
-			) {
-				try {
-					adminColas.desacolarColar(entrada);
-				} catch (Exception e) {
-					System.out.println("El puesto se encuentra vacio.");
-				}
+	public static void simularAtencion() {
+		// Por cada puesto,
+		for (int i = 0; i < cantidadPuestos; i++) {
+			// Desacolar turno del puesto
+			Cola colaActual = adminColas.devolverCola(i);
+			System.out.println("Puesto " + colaActual.getNomenclatura() + ":");
+			while (!colaActual.colaVacia()) {
+				Turno turnoActual = colaActual.primero();
 				
-			} else if (entrada.equals("-1")) break;
-		 	 
+				// Imprimir informacion del turno y del puesto
+				System.out.println("Turno " + turnoActual.getNomenclatura() + turnoActual.getId() + ": Tiempo del turno: " + turnoActual.getTiempoAtencion() + " - Tiempo del puesto: " + colaActual.devolverTiempoTotal() + " - Tiempo total: " + adminColas.getTiempoTotal());
+				
+				colaActual.desacolar();
+			}
+			
+			System.out.println();
 		}
-	}
-	
-	public static void informacion() {
-		
 	}
 	
 	public static void menu() {
@@ -181,13 +152,12 @@ public class Principal {
 		System.out.println("* Opciones:           *");
 		System.out.println("* 1- Cargar turnos    *");
 		System.out.println("* 2- Atender turnos   *");
-		System.out.println("* 3- Informacion      *");
-		System.out.println("* 4- Salir            *");
+		System.out.println("* 3- Salir            *");
 		System.out.println("*                     *");
 		System.out.println("*-*-*-*-*-*-*-*-*-*-*-*");
 		
 		while (true) {
-			System.out.print("[Comando]: ");
+			System.out.print("[Comando: 1, 2, 3]: ");
 			entrada = sc.nextLine();
 			System.out.println();
 			
@@ -197,25 +167,15 @@ public class Principal {
 					continue;
 					
 				case "2":
-					atenderTurnos();
+					simularAtencion();
 					continue;
 					
 				case "3":
-					informacion();
-					continue;
-					
-				case "4":
 					return;
 	
 				default: continue;
 			}
 		}
-	}
-	
-	public static void programa() {
-		System.out.println("Bienvenid@\n");
-		cargarTurnos();
-		atenderTurnos();
 	}
 	
 	public static void main(String[] args) {

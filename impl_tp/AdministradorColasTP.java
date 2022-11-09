@@ -7,10 +7,12 @@ import apis_tp.Turno;
 public class AdministradorColasTP implements AdministradorColas {
 
 	private Cola[] colas;
+	private int cantidadPuestos;
 	private int idCount;
 	
 	@Override
 	public void inicializar(int cantidadPuestos) {
+		this.cantidadPuestos = cantidadPuestos;
 		colas = new Cola[cantidadPuestos];
 		
 		for (int i = 0; i < cantidadPuestos; i++) {
@@ -62,7 +64,7 @@ public class AdministradorColasTP implements AdministradorColas {
 	}
 
 	@Override
-	public void desacolarColar(String nomenclatura) {
+	public void desacolarCola(String nomenclatura) {
 		this.colas[nomenclatura2indice(nomenclatura)].desacolar();
 	}
 	
@@ -93,6 +95,17 @@ public class AdministradorColasTP implements AdministradorColas {
 		nuevoTurno.inicializar(nomenclatura, idCount);
 		
 		return nuevoTurno;
+	}
+	
+	@Override
+	public int getTiempoTotal() {
+		int tiempoTotal = 0;
+		
+		for (int i = 0; i < this.cantidadPuestos; i++) {
+			tiempoTotal += this.tiempoEstimadoCola(i);
+		}
+		
+		return tiempoTotal;
 	}
 
 	public String indice2nomenclatura(int i) {

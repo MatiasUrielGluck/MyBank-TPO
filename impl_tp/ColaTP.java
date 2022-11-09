@@ -2,6 +2,7 @@ package impl_tp;
 
 import apis_tp.Cola;
 import apis_tp.Turno;
+import helpers.Debug;
 import apis_tp.ColaPrioridadTurnos;
 import impl_tp.ColaPrioridadTurnosTP;
 
@@ -79,11 +80,11 @@ public class ColaTP implements Cola {
 
 	public int colaXnomenclatura2prioridad(String nomenclatura) {
 		if (nomenclatura.equals("J")) return 6;
-		else if (this.nomenclatura.length() > 1) {
+		else if (nomenclatura.length() > 1) {
 			// Prioridad por servicio
-			if (this.nomenclatura.substring(1, 3).equals("PF")) {
+			if (nomenclatura.substring(1, 3).equals("PF")) {
 				return 5;
-			} else if (this.nomenclatura.substring(1, 3).equals("CH")) {
+			} else if (nomenclatura.substring(1, 3).equals("CH")) {
 				return 4;
 			} else {
 				return 3;
